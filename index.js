@@ -20,4 +20,18 @@ function generateRandomNumber () {
     return randomNumber;
 }
 
-generateRandomNumber();
+
+function getPlayerGuess(){
+    let guess;
+    do {
+        const input = prompt(`Hello player! This is your chance to beat the machine. Play it cool and make a guess of a number between 1 and 100:`);
+        guess = Number(input); 
+    }while (isNaN(guess) || guess < 1 || guess > 100);
+    console.log(guess);
+    return guess; 
+}
+
+
+
+
+
