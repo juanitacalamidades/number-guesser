@@ -1,4 +1,4 @@
-console.log("welcome to number guesser");
+console.log("Welcome to number guesser");
 
 // 1- Create a blank HTML file with a <script> tag that links an external .js file.
 // 2- Create the function generateRandomNumber — returns a random integer between 1 and 100.
@@ -31,7 +31,14 @@ function getPlayerGuess(){
     return guess; 
 }
 
-
-
+function checkGuess(playerGuess, correctNumber) {
+    if (playerGuess < correctNumber) {
+        return "Too low!";
+    } else if (playerGuess > correctNumber) {
+        return "Too high!";
+    } else {
+        return "Correct!";
+    }
+}
 
 
