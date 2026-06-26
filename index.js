@@ -13,10 +13,16 @@ console.log("Welcome to number guesser");
 //           5.7 -> Prints the number of attempts used.
 
 
+let counter;
+let gameOver = false;
+let victoryMessage;
+let hintMessage;
+let defeatMessage;
+
 
 function generateRandomNumber () {
     const randomNumber = Math.floor(Math.random() * 100) + 1; //between 1 and 100
-    console.log(randomNumber);
+    // console.log(randomNumber);
     return randomNumber;
 }
 
@@ -27,7 +33,7 @@ function getPlayerGuess(){
         const input = prompt(`Hello player! This is your chance to beat the machine. Play it cool and make a guess of a number between 1 and 100:`);
         guess = Number(input); 
     }while (isNaN(guess) || guess < 1 || guess > 100);
-    console.log(guess);
+    // console.log(guess);
     return guess; 
 }
 
@@ -41,4 +47,44 @@ function checkGuess(playerGuess, correctNumber) {
     }
 }
 
+
+function game(){
+
+    counter = 0;
+
+    let computerGuess = generateRandomNumber();
+    // console.log(`computer guess: ${computerGuess}`)
+
+    for(let i = 1; i <= 10; i++){
+        let playerGuess = getPlayerGuess();
+
+        // console.log(`player guess: ${playerGuess}`)
+        // console.log(`computer guess: ${computerGuess}`)
+
+        let checkWin = checkGuess(playerGuess, computerGuess);
+        
+        counter++;
+        if(checkWin === "Correct!"){
+            gameOver = true;
+            victoryMessage = `YOU WIN! Congratulations, you kicked round ${counter}`;
+            console.log(victoryMessage);
+            alert(victoryMessage);
+            return;
+        }else{
+            hintMessage = `${checkWin} Keep trying. You've got ${10 - counter} rounds left`;
+            console.log(hintMessage);
+            if(counter == 10){
+                defeatMessage = `GAME OVER. You missed your chances. The number was ${computerGuess}`;
+                console.log(defeatMessage);
+                alert(defeatMessage);
+            }else{
+                alert(hintMessage);
+            }
+        }
+    }
+}
+
+
+
+game();
 
