@@ -19,7 +19,7 @@ function getPlayerGuess(){
     let promptMessage = 'Enter your guess:';
     do {
         const input = prompt(promptMessage);
-        guess = Number(input); 
+        guess = input === null ? NaN : Number(input);
         promptMessage = 'Your life depends on this: ENTER A VALID NUMBER!';
     }while (isNaN(guess) || guess < 1 || guess > 100);
     // console.log(guess);
