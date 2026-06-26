@@ -14,7 +14,6 @@ console.log("Welcome to number guesser");
 
 
 let counter;
-let gameOver = false;
 let victoryMessage;
 let hintMessage;
 let defeatMessage;
@@ -68,7 +67,6 @@ function game(){
         
         counter++;
         if(checkWin === 'Correct!'){
-            gameOver = true;
             victoryMessage = `YOU WIN! You beat the machine in ${counter} attempt${counter === 1 ? '' : 's'}!`;
             console.log(victoryMessage);
             alert(victoryMessage);
@@ -86,8 +84,6 @@ function game(){
         }
     }
 }
-
-
 
 game();
 
