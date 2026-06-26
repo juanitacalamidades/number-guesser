@@ -29,9 +29,11 @@ function generateRandomNumber () {
 
 function getPlayerGuess(){
     let guess;
+    let promptMessage = 'Enter your guess:';
     do {
-        const input = prompt(`Hello player! This is your chance to beat the machine. Play it cool and make a guess of a number between 1 and 100:`);
-        guess = Number(input); 
+        const input = prompt(promptMessage);
+        guess = Number(input);
+        promptMessage = 'Your life depends on this: ENTER A VALID NUMBER!';
     }while (isNaN(guess) || guess < 1 || guess > 100);
     // console.log(guess);
     return guess; 
@@ -39,9 +41,9 @@ function getPlayerGuess(){
 
 function checkGuess(playerGuess, correctNumber) {
     if (playerGuess < correctNumber) {
-        return "Too low!";
+        return `${playerGuess} is too low!`;
     } else if (playerGuess > correctNumber) {
-        return "Too high!";
+        return `${playerGuess} is too high!`;
     } else {
         return "Correct!";
     }
@@ -50,6 +52,7 @@ function checkGuess(playerGuess, correctNumber) {
 
 function game(){
 
+    alert('Hello player! This is your chance to beat the machine. Make a guess of a number between 1 and 100');
     counter = 0;
 
     let computerGuess = generateRandomNumber();
@@ -64,9 +67,9 @@ function game(){
         let checkWin = checkGuess(playerGuess, computerGuess);
         
         counter++;
-        if(checkWin === "Correct!"){
+        if(checkWin === 'Correct!'){
             gameOver = true;
-            victoryMessage = `YOU WIN! Congratulations, you kicked round ${counter}`;
+            victoryMessage = `YOU WIN! You beat the machine in ${counter} attempt${counter === 1 ? '' : 's'}!`;
             console.log(victoryMessage);
             alert(victoryMessage);
             return;
