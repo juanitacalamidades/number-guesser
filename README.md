@@ -1,3 +1,32 @@
+# Number Guessing Game
+
+A browser-based number guessing game played entirely in the console.
+
+## Description
+
+The player has 10 attempts to guess a randomly generated number between 1 and 100. After each guess, the game provides feedback indicating whether the guess is too low or too high.
+
+## How to Play
+
+1. Open `index.html` in a browser.
+2. A welcome message will appear — click OK to start.
+3. Enter a number between 1 and 100 in the prompt.
+4. The game will tell you if your guess is too low or too high.
+5. Keep guessing until you find the correct number or run out of attempts.
+
+## Game Rules
+
+- The number is randomly generated between 1 and 100.
+- The player has a maximum of 10 attempts.
+- Only integers between 1 and 100 are accepted as valid input.
+
+## Files
+
+- `index.html` — entry point
+- `index.js` — game logic
+
+
+
 Functions used:
 
 • generateRandomNumber → It generates a random number between 1 and 100 and returns it.
@@ -9,6 +38,8 @@ Functions used:
 • game → It shows the structure messages, creates a 10-round limit, reads the player's guess, checks if it's correct, counts the player's attempts and shows if the player has won or lost.
 
 getPlayerGuess — Input Validation Cases
+
+
 
 | Input              | Example         | Number() result | isNaN() | < 1   | > 100 | Reprompt? |
 |--------------------|-----------------|-----------------|---------|-------|-------|-----------|
