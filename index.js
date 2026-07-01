@@ -1,6 +1,3 @@
-console.log("Welcome to number guesser");
-
-
 let counter;
 let victoryMessage;
 let hintMessage;
@@ -9,21 +6,19 @@ let defeatMessage;
 
 function generateRandomNumber () {
     const randomNumber = Math.floor(Math.random() * 100) + 1; //between 1 and 100
-    // console.log(randomNumber);
     return randomNumber;
 }
 
 
 function getPlayerGuess(){
     let guess;
-    let promptMessage = 'Enter your guess:';
+    let promptMessage = 'Enter your guess (1–100):';
     do {
         const input = prompt(promptMessage);
         guess = input === null ? NaN : Number(input);
-        promptMessage = 'Your life depends on this: ENTER A VALID NUMBER!';
+        promptMessage = 'Please enter a whole number between 1 and 100.';
     }while (isNaN(guess) || guess < 1 || guess > 100);
-    // console.log(guess);
-    return guess; 
+    return guess;
 }
 
 function checkGuess(playerGuess, correctNumber) {
@@ -39,7 +34,12 @@ function checkGuess(playerGuess, correctNumber) {
 
 function game(){
 
-    alert('Hello player! This is your chance to beat the machine. Make a guess of a number between 1 and 100');
+    alert(
+        'Welcome! Guess a number between 1 and 100. You have 10 attempts.\n\n' +
+        'Tip: open the developer console to see game logs.\n' +
+        '  macOS:   Cmd + Option + I\n' +
+        '  Windows: F12  or  Ctrl + Shift + I'
+    );
     counter = 0;
 
     let computerGuess = generateRandomNumber();
@@ -48,21 +48,21 @@ function game(){
     for(let i = 1; i <= 10; i++){
         let playerGuess = getPlayerGuess();
         let checkWin = checkGuess(playerGuess, computerGuess);
-        
+
         counter++;
         if(checkWin === 'Correct!'){
-            victoryMessage = `YOU WIN! You beat the machine in ${counter} attempt${counter === 1 ? '' : 's'}!`;
+            victoryMessage = `YOU WIN! The number was ${computerGuess}. You guessed it in ${counter} attempt${counter === 1 ? '' : 's'}!`;
             console.log(victoryMessage);
             alert(victoryMessage);
             return;
         }else{
-            hintMessage = `${checkWin} Keep trying. You've got ${10 - counter} round${10 - counter === 1 ? '' : 's'} left`;
-            console.log(hintMessage);
-            if(counter == 10){
-                defeatMessage = `GAME OVER. You missed your chances. The number was ${computerGuess}`;
+            if(counter === 10){
+                defeatMessage = `GAME OVER. The number was ${computerGuess} — better luck next time!`;
                 console.log(defeatMessage);
                 alert(defeatMessage);
             }else{
+                hintMessage = `${checkWin} Keep trying. You've got ${10 - counter} round${10 - counter === 1 ? '' : 's'} left.`;
+                console.log(hintMessage);
                 alert(hintMessage);
             }
         }
