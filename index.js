@@ -34,12 +34,17 @@ function checkGuess(playerGuess, correctNumber) {
 
 function game(){
 
-    alert(
+    const wantsToPlay = confirm(
         'Welcome! Guess a number between 1 and 100. You have 10 attempts.\n\n' +
         'Tip: open the developer console to see game logs.\n' +
         '  macOS:   Cmd + Option + I\n' +
-        '  Windows: F12  or  Ctrl + Shift + I'
+        '  Windows: F12  or  Ctrl + Shift + I\n\n' +
+        'Press OK to start, or Cancel to quit.'
     );
+    if (!wantsToPlay) {
+        console.log('Game cancelled before it started. See you next time!');
+        return;
+    }
     counter = 0;
 
     let computerGuess = generateRandomNumber();
